@@ -5,8 +5,11 @@ a persistent ChromaDB collection for semantic search.
 """
 
 import os
+from dotenv import load_dotenv
+load_dotenv()
+
 from langchain_chroma import Chroma
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
 from langchain_community.document_loaders import DirectoryLoader, TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
@@ -16,7 +19,10 @@ KNOWLEDGE_DIR = os.path.join(os.path.dirname(__file__), "knowledge")
 CHROMA_PERSIST_DIR = os.path.join(os.path.dirname(__file__), "chroma_db")
 COLLECTION_NAME = "kisamitra_knowledge"
 
-embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
+embeddings = HuggingFaceInferenceAPIEmbeddings(
+    api_key=os.getenv("HF_API_KEY"),
+    model_name=EMBEDDING_MODEL
+)
 
 
 def build_vector_store():
