@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Work+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Kisan — earthy editorial design system. All colors HSL. */
+
+@layer base {
+  :root {
+    --background: 40 33% 97%;          /* #FDFCFB neutral */
+    --foreground: 120 15% 12%;
+
+    --card: 40 33% 99%;
+    --card-foreground: 120 15% 12%;
+
+    --popover: 40 33% 99%;
+    --popover-foreground: 120 15% 12%;
+
+    /* Primary — deep sage green #4F6D58 */
+    --primary: 134 14% 37%;
+    --primary-foreground: 40 33% 97%;
+    --primary-glow: 134 18% 48%;
+    --primary-deep: 134 22% 22%;
+
+    /* Secondary — warm brown #634B3A */
+    --secondary: 24 25% 31%;
+    --secondary-foreground: 40 33% 97%;
+
+    /* Tertiary — muted sage #8FA18C */
+    --tertiary: 110 11% 59%;
+    --tertiary-foreground: 120 15% 12%;
+
+    --muted: 40 20% 93%;
+    --muted-foreground: 120 8% 38%;
+
+    --accent: 134 18% 90%;
+    --accent-foreground: 134 22% 22%;
+
+    --destructive: 5 65% 48%;
+    --destructive-foreground: 40 33% 97%;
+
+    --border: 40 15% 87%;
+    --input: 40 15% 87%;
+    --ring: 134 14% 37%;
+
+    --radius: 1rem;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(134 22% 22% / 0.85), hsl(24 25% 31% / 0.55));
+    --gradient-card: linear-gradient(160deg, hsl(40 33% 99%), hsl(40 20% 95%));
+    --gradient-primary: linear-gradient(135deg, hsl(134 14% 37%), hsl(134 22% 22%));
+
+    /* Shadows */
+    --shadow-soft: 0 2px 12px -4px hsl(134 22% 22% / 0.08);
+    --shadow-elevated: 0 18px 40px -20px hsl(134 22% 22% / 0.25);
+    --shadow-glow: 0 0 60px -10px hsl(134 18% 48% / 0.4);
+
+    --transition-smooth: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+
+    --sidebar-background: 40 25% 96%;
+    --sidebar-foreground: 120 15% 18%;
+    --sidebar-primary: 134 22% 22%;
+    --sidebar-primary-foreground: 40 33% 97%;
+    --sidebar-accent: 134 18% 90%;
+    --sidebar-accent-foreground: 134 22% 22%;
+    --sidebar-border: 40 15% 87%;
+    --sidebar-ring: 134 14% 37%;
+  }
+
+  .dark {
+    --background: 134 22% 8%;
+    --foreground: 40 33% 95%;
+    --card: 134 18% 11%;
+    --card-foreground: 40 33% 95%;
+    --popover: 134 18% 11%;
+    --popover-foreground: 40 33% 95%;
+    --primary: 134 18% 55%;
+    --primary-foreground: 134 22% 10%;
+    --secondary: 24 20% 28%;
+    --secondary-foreground: 40 33% 95%;
+    --tertiary: 110 11% 45%;
+    --tertiary-foreground: 40 33% 95%;
+    --muted: 134 14% 16%;
+    --muted-foreground: 40 15% 65%;
+    --accent: 134 14% 18%;
+    --accent-foreground: 40 33% 95%;
+    --destructive: 5 65% 45%;
+    --destructive-foreground: 40 33% 95%;
+    --border: 134 14% 18%;
+    --input: 134 14% 18%;
+    --ring: 134 18% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .bg-grain {
+    background-image: radial-gradient(hsl(var(--secondary) / 0.06) 1px, transparent 1px);
+    background-size: 4px 4px;
+  }
+}

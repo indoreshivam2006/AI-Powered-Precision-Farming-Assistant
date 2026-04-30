@@ -1,0 +1,14 @@
+langchain>=0.2.0
+langchain-groq>=0.1.0
+langchain-community>=0.2.0
+langchain-text-splitters>=0.2.0
+chromadb>=0.5.0
+langchain-chroma>=0.1.0
+sentence-transformers>=2.2.0
+fastapi>=0.111.0
+uvicorn>=0.29.0
+langdetect>=1.0.9
+requests>=2.31.0
+python-dotenv>=1.0.0
+python-multipart>=0.0.9
+twilio>=9.0.0

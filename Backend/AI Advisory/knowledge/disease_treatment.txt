@@ -1,0 +1,141 @@
+# Common Crop Diseases and Treatments in India
+
+## Rice Diseases
+
+### Blast Disease (Magnaporthe oryzae)
+- Symptoms: Spindle-shaped spots on leaves with grey center and brown border, neck rot
+- Cause: Fungal — high nitrogen, humid conditions
+- Treatment:
+  - Spray Tricyclazole 75% WP @ 0.6 g/L water
+  - Or Isoprothiolane 40% EC @ 1.5 mL/L water
+  - Reduce nitrogen dose by 25% if blast is recurring
+- Prevention: Use resistant varieties (Pusa Basmati 1121, Samba Mahsuri)
+
+### Bacterial Leaf Blight (Xanthomonas oryzae)
+- Symptoms: Water-soaked yellow lesions on leaves starting from tip, wilting
+- Cause: Bacterial — spreads through infected seeds and irrigation water
+- Treatment:
+  - Spray Streptocycline 500 ppm + Copper oxychloride 2.5 g/L
+  - Drain excess water from field
+- Prevention: Use certified seeds, avoid excess nitrogen
+
+### Brown Plant Hopper (BPH)
+- Symptoms: Hopper burn — circular patches of dried plants, honeydew on lower stem
+- Cause: Insect pest — favored by excess nitrogen and close planting
+- Treatment:
+  - Spray Buprofezin 25% SC @ 1.6 mL/L water
+  - Or Pymetrozine 50% WG @ 0.3 g/L water
+  - Avoid synthetic pyrethroids (kills natural enemies)
+- Prevention: Do not apply excess nitrogen, maintain proper spacing
+
+## Wheat Diseases
+
+### Yellow Rust / Stripe Rust (Puccinia striiformis)
+- Symptoms: Yellow-orange pustules in stripes along leaf veins
+- Cause: Fungal — cool, humid weather (10–15°C)
+- Treatment:
+  - Spray Propiconazole 25% EC @ 1 mL/L water (1st spray at appearance)
+  - 2nd spray after 15 days if needed
+- Prevention: Sow resistant varieties (HD 3226, WH 1105), avoid late sowing
+
+### Loose Smut (Ustilago tritici)
+- Symptoms: Earhead replaced by black powdery mass of spores
+- Cause: Seed-borne fungal disease
+- Treatment:
+  - Seed treatment with Carboxin 75% WP @ 2.5 g/kg seed
+  - Or Vitavax Power (Carboxin + Thiram) @ 2.5 g/kg seed
+- Prevention: Use disease-free certified seeds
+
+### Leaf Yellowing in Wheat
+- Symptoms: Yellowing of lower leaves progressing upward, stunted growth
+- Possible Causes:
+  1. Nitrogen deficiency — Apply 30 kg urea/acre as top dressing + irrigation
+  2. Iron chlorosis — Spray 0.5% ferrous sulfate + 0.25% citric acid
+  3. Waterlogging — Improve drainage immediately
+  4. Root rot — Check roots; if brown/black, apply Carbendazim drench
+
+### Yellow Rust / Pila Ratua (पीला रतुआ / Yellow Rust) — Wheat
+- Symptoms: Yellow pustules arranged in stripes along leaf veins, powdery yellow spores rub off on fingers
+- Cause: Fungus Puccinia striiformis — favors cool humid weather (10–15°C)
+- Treatment:
+  - Spray Propiconazole 25% EC — 1 mL per litre of water
+  - Repeat spray after 10 days if pustules persist
+  - Apply in early morning when dew is present. Do not spray during rain.
+- Prevention: Use resistant varieties like HD-2967, PBW-343, HD 3226. Avoid excess nitrogen fertilizer.
+- States most affected: Punjab, Haryana, Uttar Pradesh, Madhya Pradesh
+
+### Wheat Leaf Blight / Patti Jhulsa (पत्ती झुलसा) — Wheat
+- Symptoms: Brown oval spots with yellow border on leaves, infection starts from lower older leaves and moves upward
+- Cause: Fungus Alternaria triticina — spreads in warm humid conditions
+- Treatment:
+  - Spray Mancozeb 75% WP — 2.5 g per litre of water
+  - Give 2–3 sprays at 10 day intervals starting at first sign of spots
+- Prevention: Treat seeds with Thiram @ 2.5 g/kg seed before sowing. Use clean certified seed.
+
+### Wheat Nitrogen Deficiency (गेहूं में नाइट्रोजन की कमी)
+- Symptoms: Uniform yellowing of older/lower leaves first, then moves upward. No spots, no pustules, no stripes — just plain even yellowing. Stunted growth.
+- This is NOT a disease — it is a nutrient deficiency.
+- Treatment:
+  - Apply Urea top dressing — 20–25 kg per acre
+  - Irrigate the field immediately after urea application
+  - For quick recovery, also do foliar spray of 2% urea solution
+- How to tell apart from Yellow Rust:
+  - Yellow Rust = yellow pustules/stripes on leaves, powdery spores
+  - Nitrogen deficiency = plain uniform yellowing, no spots or pustules
+
+## Cotton Diseases
+
+### Cotton Leaf Curl Virus (CLCuV)
+- Symptoms: Upward curling of leaves, thickened veins, enations (outgrowths)
+- Cause: Virus — transmitted by whitefly (Bemisia tabaci)
+- Treatment:
+  - No cure for virus; manage whitefly vector
+  - Spray Diafenthiuron 50% WP @ 1.2 g/L or Spiromesifen 240 SC @ 0.7 mL/L
+- Prevention: Use tolerant varieties, remove early infected plants
+
+### Pink Bollworm (Pectinophora gossypiella)
+- Symptoms: Rosette flowers, bored bolls with pink larvae inside
+- Treatment:
+  - Install pheromone traps (5/acre) for monitoring
+  - Spray Emamectin benzoate 5% SG @ 0.4 g/L water
+- Prevention: Early sowing, timely picking, destroy crop residues
+
+## Tomato Diseases
+
+### Late Blight (Phytophthora infestans)
+- Symptoms: Dark brown water-soaked spots on leaves, white mold underneath, fruit rot
+- Treatment:
+  - Spray Mancozeb 75% WP @ 2.5 g/L + Metalaxyl 35% WS as preventive
+  - Or Cymoxanil + Mancozeb @ 3 g/L
+- Prevention: Good spacing, avoid overhead irrigation, stake plants
+
+### Tomato Leaf Curl Virus
+- Symptoms: Upward curling of leaves, yellowing, stunted plants
+- Cause: Transmitted by whitefly
+- Treatment:
+  - Control whitefly with Imidacloprid 17.8% SL @ 0.3 mL/L
+  - Remove and destroy infected plants
+- Prevention: Use virus-resistant varieties, yellow sticky traps
+
+## General Plant Disease Management Tips
+
+### Yellowing of Leaves (Common Causes)
+1. Nitrogen deficiency → Apply urea or foliar spray of 2% urea
+2. Iron deficiency → Spray ferrous sulfate 0.5% + citric acid 0.25%
+3. Magnesium deficiency → Spray magnesium sulfate 1%
+4. Overwatering → Improve drainage, reduce irrigation frequency
+5. Pest attack → Check underside of leaves for insects
+6. Viral infection → Look for mosaic patterns, leaf curling
+
+### Organic / IPM Approaches
+- Neem oil 1500 ppm @ 5 mL/L — broad spectrum insecticide
+- Trichoderma viride — soil treatment for root diseases (4 kg/acre mixed with FYM)
+- Pseudomonas fluorescens — seed treatment + soil drench for wilt
+- Panchagavya — organic growth promoter, spray 3% solution every 15 days
+- Yellow/Blue sticky traps — for whitefly, aphids, thrips
+- Cow urine spray (10%) — fungicidal and growth-promoting properties
+
+### When to Call an Expert
+- If more than 30% of the crop is affected
+- If you see unusual symptoms not described above
+- Contact your nearest Krishi Vigyan Kendra (KVK) or use the Kisan Call Centre: 1800-180-1551 (toll-free)

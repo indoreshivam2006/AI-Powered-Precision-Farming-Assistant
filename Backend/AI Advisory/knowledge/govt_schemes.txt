@@ -1,0 +1,106 @@
+# Government Schemes for Indian Farmers (2024-2026)
+
+## PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)
+- What: ₹6,000 per year in 3 installments of ₹2,000 each directly to bank account
+- Who: All landholding farmer families (small and marginal)
+- Exclusion: Institutional landholders, income tax payers, govt employees
+- How to apply:
+  1. Visit pmkisan.gov.in or your nearest CSC (Common Service Centre)
+  2. Provide Aadhaar number, bank account details, and land records
+  3. Verification by state/district officials
+- Helpline: 155261 or 011-24300606
+- Status check: pmkisan.gov.in → Beneficiary Status → Enter Aadhaar number
+
+## PM Fasal Bima Yojana (Crop Insurance)
+- What: Crop insurance at very low premium — 2% for Kharif, 1.5% for Rabi, 5% for commercial crops
+- Coverage: Natural calamities, pest attacks, diseases, post-harvest losses (up to 14 days)
+- How to apply:
+  1. Visit bank branch or CSC before cutoff date (varies by crop/state)
+  2. Provide crop sowing details, land records, bank account
+  3. Premium deducted from bank account
+- Claim process: Report crop loss within 72 hours through Crop Insurance App or toll-free number 14447
+- Important: Non-loanee farmers can also enroll voluntarily
+
+## Soil Health Card Scheme
+- What: Free soil testing + personalized Soil Health Card every 2 years
+- Benefits: Know exact NPK + micronutrient status of your soil, save on fertilizer cost
+- How to get:
+  1. Contact nearest Krishi Vigyan Kendra (KVK) or Agriculture Department
+  2. Or visit soilhealth.dac.gov.in
+  3. Officials collect soil sample from your field
+  4. Card delivered with crop-wise fertilizer recommendations
+- Tip: Follow Soil Health Card recommendations — farmers save 20-30% on fertilizer costs
+
+## Kisan Credit Card (KCC)
+- What: Short-term credit for crop production at 4% interest (with prompt repayment)
+- Loan limit: Based on crop, area, and scale of finance
+- Interest subvention: 7% interest → 3% subvention → effective 4% for timely repayment
+- How to apply:
+  1. Visit nearest bank (cooperative, RRB, or commercial bank)
+  2. Provide land documents, Aadhaar, passport photo
+  3. Loan sanctioned within 14 days
+- Now covers: Animal husbandry and fisheries farmers too
+- Helpline: Contact your bank's agriculture desk
+
+## PM Krishi Sinchai Yojana (Irrigation)
+- What: Subsidy on micro-irrigation (drip + sprinkler) systems
+- Subsidy: 55% for small/marginal farmers, 45% for others
+- Additional state top-up in many states (e.g., Maharashtra gives additional 25-30%)
+- How to apply:
+  1. Apply online at state agriculture portal or through district agriculture office
+  2. Provide land details, water source, crop plan
+  3. Get system installed by empaneled company
+  4. Subsidy credited after installation verification
+- Benefit: Saves 40-60% water, increases yield by 20-30%
+
+## National Mission on Sustainable Agriculture (NMSA)
+- What: Promotes organic farming, soil health management, water conservation
+- Key components:
+  - Paramparagat Krishi Vikas Yojana (PKVY) — ₹50,000/hectare for organic farming over 3 years
+  - Soil Health Management — free/subsidized soil testing
+  - Rainfed Area Development — integrated farming system support
+- How to participate: Contact District Agriculture Officer or visit agricoop.nic.in
+
+## e-NAM (National Agriculture Market)
+- What: Online platform connecting mandis across India for transparent price discovery
+- Benefits: Better prices, transparent bidding, reduced middlemen
+- How to use:
+  1. Register on enam.gov.in with Aadhaar + bank details
+  2. Bring produce to nearest e-NAM enabled mandi
+  3. Quality tested → listed online → traders bid → highest bid wins
+- States covered: 23 states, 1,361+ mandis integrated
+- Tip: Check prices across mandis before selling
+
+## Pradhan Mantri Krishi Udan Yojana
+- What: Subsidized air cargo for perishable agricultural products
+- Benefits: Farmers in northeast, tribal, and hilly areas get transport subsidy
+- Covers: Fruits, vegetables, flowers, meat, fish, dairy
+- How to avail: Through airlines and airports participating in the scheme
+
+## State-Level Schemes (Examples)
+
+### Maharashtra
+- Magel Tyala Shettale (Farm Pond Scheme) — subsidy for farm pond construction
+- Nanaji Deshmukh Krishi Sanjivani Yojana — climate-resilient agriculture in Vidarbha and Marathwada
+- Bhausaheb Fundkar Fruit Plantation Scheme
+
+### Madhya Pradesh
+- Bhavantar Bhugtan Yojana — price deficiency payment to farmers
+- Mukhyamantri Kisan Kalyan Yojana — additional ₹4,000/year (on top of PM-KISAN)
+
+### Punjab & Haryana
+- Direct Benefit Transfer for fertilizer subsidy
+- Crop residue management scheme — subsidized Happy Seeder, Super SMS
+
+## Important Helplines & Resources
+- Kisan Call Centre: 1800-180-1551 (toll-free, available in local languages)
+- mKisan Portal: mkisan.gov.in — SMS advisories in local language
+- Kisan Suvidha App: Weather, market prices, plant protection, expert advisory
+- IFFCO Kisan App: Real-time mandi prices, weather, farming tips
+- Agmarknet: agmarknet.gov.in — daily mandi prices across India
+
+## Mandi Price Information
+- Check live prices: agmarknet.gov.in or e-NAM portal
+- Major mandis: Azadpur (Delhi), Vashi (Mumbai), Yeshwanthpur (Bangalore)
+- Tip: Compare prices across 3-4 mandis before selling
+- MSP (Minimum Support Price) announced by govt for 23 crops — sell at MSP or above through FCI/NAFED procurement centres

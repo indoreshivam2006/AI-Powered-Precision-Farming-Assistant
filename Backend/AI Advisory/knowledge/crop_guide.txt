@@ -1,0 +1,118 @@
+# Crop Guide for Indian Farmers
+
+## Kharif Crops (June–October, Monsoon Season)
+
+### Rice (Chawal / Dhan)
+- Best soil: Clayey loam, well-irrigated fields
+- NPK requirement: 120-60-40 kg/hectare
+- Regions: Punjab, Haryana, West Bengal, Tamil Nadu, Andhra Pradesh
+- Sowing: June–July | Harvesting: October–November
+- Key tip: Maintain 5 cm standing water during tillering stage
+
+### Cotton (Kapas)
+- Best soil: Black cotton soil (Regur)
+- NPK requirement: 80-40-40 kg/hectare
+- Regions: Gujarat, Maharashtra (Vidarbha), Telangana, Madhya Pradesh
+- Sowing: April–May | Harvesting: October–December
+- Key tip: Use Bt cotton varieties for bollworm resistance
+
+### Soybean
+- Best soil: Well-drained loamy soil
+- NPK requirement: 30-60-40 kg/hectare (fixes its own nitrogen)
+- Regions: Madhya Pradesh, Maharashtra, Rajasthan
+- Sowing: June–July | Harvesting: September–October
+- Key tip: Seed treatment with Rhizobium culture improves nitrogen fixation
+
+### Maize (Makka)
+- Best soil: Sandy loam to loamy soil
+- NPK requirement: 120-60-40 kg/hectare
+- Regions: Karnataka, Bihar, Madhya Pradesh, Rajasthan
+- Sowing: June–July | Harvesting: September–October
+- Key tip: Apply zinc sulfate at 25 kg/hectare if zinc-deficient soil
+
+### Bajra (Pearl Millet)
+- Best soil: Sandy to sandy loam (drought resistant)
+- NPK requirement: 60-30-0 kg/hectare
+- Regions: Rajasthan, Gujarat, Haryana, Maharashtra
+- Sowing: June–July | Harvesting: September–October
+- Key tip: Excellent crop for low-rainfall and arid regions
+
+## Rabi Crops (October–March, Winter Season)
+
+### Wheat (Gehu)
+- Best soil: Well-drained loamy to clayey loam
+- NPK requirement: 120-60-40 kg/hectare
+- Regions: Punjab, Haryana, Uttar Pradesh, Madhya Pradesh
+- Sowing: October–November | Harvesting: March–April
+- Key tip: First irrigation (crown root stage) at 21 days after sowing is critical
+
+### Mustard (Sarson)
+- Best soil: Loamy to sandy loam
+- NPK requirement: 60-40-20 kg/hectare
+- Regions: Rajasthan, Uttar Pradesh, Madhya Pradesh, Haryana
+- Sowing: October | Harvesting: February–March
+- Key tip: Spray water-soluble boron at flowering for better pod setting
+
+### Chickpea (Chana)
+- Best soil: Well-drained loamy soil
+- NPK requirement: 20-40-20 kg/hectare
+- Regions: Madhya Pradesh, Rajasthan, Maharashtra, Karnataka
+- Sowing: October–November | Harvesting: February–March
+- Key tip: Avoid excess irrigation — one or two irrigations are enough
+
+### Potato (Aloo)
+- Best soil: Sandy loam, well-drained, rich in organic matter
+- NPK requirement: 150-60-100 kg/hectare
+- Regions: Uttar Pradesh, West Bengal, Bihar, Punjab
+- Sowing: October | Harvesting: January–February
+- Key tip: Use certified seed tubers to avoid virus diseases
+
+## Zaid Crops (March–June, Summer Season)
+
+### Moong (Green Gram)
+- Best soil: Loamy to sandy loam
+- NPK requirement: 20-40-20 kg/hectare
+- Regions: Rajasthan, Maharashtra, Andhra Pradesh
+- Sowing: March–April | Harvesting: May–June
+
+### Watermelon (Tarbooz)
+- Best soil: Sandy loam
+- NPK requirement: 80-60-60 kg/hectare
+- Regions: Uttar Pradesh, Rajasthan, Karnataka
+- Sowing: February–March | Harvesting: May–June
+
+## Fertilizer Application General Guidelines
+
+### Urea (46% N)
+- Apply in 2-3 split doses: basal + top dressing
+- Never broadcast on dry soil — irrigate within 2 days
+
+### DAP (18-46-0)
+- Best applied as basal dose at sowing
+- Place 5 cm below and 5 cm to the side of seed
+
+### MOP / Potash (60% K2O)
+- Full dose as basal application
+- Important for root crops (potato, onion, carrot)
+
+### Soil Testing
+- Get soil tested every 2 years from nearest Krishi Vigyan Kendra (KVK)
+- Soil Health Card scheme provides free testing
+- Balanced fertilization based on soil test saves 20-30% fertilizer cost
+
+## Region-Specific Recommendations
+
+### Vidarbha (Maharashtra)
+- Black soil: Cotton, Soybean, Tur (Pigeon Pea), Orange (Nagpur region)
+- Focus on drip irrigation — saves 40-60% water
+- Apply gypsum for sodic soils
+
+### Punjab-Haryana Belt
+- Rice-Wheat rotation (consider crop diversification)
+- Stubble management: Use Happy Seeder instead of burning
+- Declining water table — switch to less water-intensive crops
+
+### Southern India (Karnataka, Tamil Nadu)
+- Red soil: Ragi, Groundnut, Sunflower
+- Laterite soil: Cashew, Coconut, Rubber
+- Drip + mulching for horticultural crops
