@@ -26,10 +26,10 @@ An intelligent farming companion built for Indian farmers. KisanMitra combines M
        │              │              │
        ▼              ▼              ▼
  ┌───────────┐ ┌────────────┐ ┌───────────┐
- │  Disease   │ │    Crop    │ │    AI     │
- │ Prediction │ │ Recommend  │ │ Advisory  │
- │  (8000)    │ │  (8001)    │ │  (8080)   │
- │ TF/Keras   │ │ sklearn    │ │ LangChain │
+ │  Disease  │ │    Crop    │ │    AI     │
+ │ Prediction│ │ Recommend  │ │ Advisory  │
+ │  (8000)   │ │  (8001)    │ │  (8080)   │
+ │ TF/Keras  │ │ sklearn    │ │ LangChain │
  └───────────┘ └────────────┘ └───────────┘
 ```
 
