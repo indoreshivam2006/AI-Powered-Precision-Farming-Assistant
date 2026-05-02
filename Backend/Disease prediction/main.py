@@ -136,6 +136,71 @@ async def detect_disease(request: ImageRequest):
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
+class LiveFrameRequest(BaseModel):
+    frame: str  # base64-encoded JPEG frame
+
+@app.post("/detect-live")
+async def detect_live_frame(request: LiveFrameRequest):
+    """Optimized endpoint for live video frame inference.
+    Returns class label, confidence score, and treatment — minimal overhead."""
+    if model is None:
+        raise HTTPException(status_code=503, detail="Model is still loading")
+
+    try:
+        base64_data = request.frame
+        if "," in base64_data:
+            base64_data = base64_data.split(",")[1]
+
+        image_bytes = base64.b64decode(base64_data)
+        img = Image.open(io.BytesIO(image_bytes)).convert("RGB")
+        img = np.array(img)
+
+        # Preprocess: resize + float32 (EfficientNet uses 0-255 range)
+        img = cv2.resize(img, (224, 224))
+        img = img.astype(np.float32)
+        img = np.expand_dims(img, axis=0)
+
+        # Predict
+        preds = model.predict(img, verbose=0)
+        top_idx = int(np.argmax(preds[0]))
+        confidence = float(preds[0][top_idx])
+        class_name = CLASS_NAMES[top_idx]
+
+        if class_name in ['test', 'train', 'valid']:
+            return {
+                "label": "Unknown",
+                "confidence": 0.0,
+                "treatment": "Could not identify. Please adjust camera angle.",
+                "healthy": False,
+            }
+
+        meta = META_MAP.get(normalize_string(class_name), {
+            "disease": class_name.replace("_", " "),
+            "treatment": "Consult an agronomist for appropriate treatment."
+        })
+
+        is_healthy = "healthy" in class_name.lower()
+
+        return {
+            "label": meta["disease"],
+            "confidence": round(confidence, 4),
+            "treatment": meta["treatment"],
+            "healthy": is_healthy,
+        }
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@app.get("/model-status")
+async def model_status():
+    """Check if the model is loaded and ready for inference."""
+    return {
+        "loaded": model is not None,
+        "num_classes": len(CLASS_NAMES),
+        "input_shape": "(1, 224, 224, 3)",
+    }
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)

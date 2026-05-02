@@ -38,7 +38,6 @@ build/
 .env.development.local
 .env.test.local
 .env.production.local
-*.env
 
 # IDEs
 .vscode/
@@ -52,3 +51,4 @@ Thumbs.db
 
 # Other
 chroma_db/
+.sixth/

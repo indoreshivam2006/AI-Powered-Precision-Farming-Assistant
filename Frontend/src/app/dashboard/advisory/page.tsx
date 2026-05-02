@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { ComponentType, RefAttributes } from "react";
-import { useChat } from "@ai-sdk/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Send, Bot, User, Loader2, Mic, Square, Volume2, Camera, ImagePlus, X } from "lucide-react";

@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Sprout, Leaf, FlaskConical, Bot, Bell, User } from "lucide-react";
+import { Home, Sprout, Leaf, FlaskConical, Bot, Bell, User, Video } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
   { href: "/dashboard", label: "Overview", icon: Home, exact: true },
   { href: "/dashboard/crop", label: "Crop Recommendation", icon: Sprout },
   { href: "/dashboard/disease", label: "Plant Disease Predict", icon: Leaf },
+  { href: "/dashboard/live-detect", label: "Live Detection", icon: Video },
   { href: "/dashboard/fertilizer", label: "Fertilizer Optimizer", icon: FlaskConical },
   { href: "/dashboard/advisory", label: "AI Advisory Agent", icon: Bot },
 ];

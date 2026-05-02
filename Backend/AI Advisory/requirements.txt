@@ -12,3 +12,5 @@ requests>=2.31.0
 python-dotenv>=1.0.0
 python-multipart>=0.0.9
 twilio>=9.0.0
+groq>=0.4.0
+huggingface-hub>=0.20.0
