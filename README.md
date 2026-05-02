@@ -130,4 +130,4 @@ MIT
 
 ---
 
-*Built with ❤️ for India's farmers — Cultivating clarity, one field at a time.*
+*Built with ❤️ for India's farmers — Cultivating clarity, one field at a time. By Shivam Indore*
