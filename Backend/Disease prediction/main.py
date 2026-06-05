@@ -89,7 +89,7 @@ class ImageRequest(BaseModel):
     image: str
 
 @app.post("/detect")
-async def detect_disease(request: ImageRequest):
+def detect_disease(request: ImageRequest):
     if model is None:
         raise HTTPException(status_code=500, detail="Model not loaded")
     
@@ -140,7 +140,7 @@ class LiveFrameRequest(BaseModel):
     frame: str  # base64-encoded JPEG frame
 
 @app.post("/detect-live")
-async def detect_live_frame(request: LiveFrameRequest):
+def detect_live_frame(request: LiveFrameRequest):
     """Optimized endpoint for live video frame inference.
     Returns class label, confidence score, and treatment — minimal overhead."""
     if model is None:

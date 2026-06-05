@@ -158,6 +158,9 @@ class ICARFertilizerOptimizer:
         if nutrient not in self.SOIL_TEST_CATEGORIES:
             raise ValueError(f"Unknown nutrient: {nutrient}")
 
+        if value < 0:
+            raise ValueError(f"Soil nutrient level for {nutrient} cannot be negative (provided: {value})")
+
         categories = self.SOIL_TEST_CATEGORIES[nutrient]
         for category, (min_val, max_val) in categories.items():
             if min_val <= value < max_val:

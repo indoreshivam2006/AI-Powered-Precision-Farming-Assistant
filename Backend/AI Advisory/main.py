@@ -50,6 +50,10 @@ app.add_middleware(
 
 
 # ── Request / Response Models ──────────────────────────────────────
+class HistoryMessage(BaseModel):
+    role: str
+    content: str
+
 class ChatRequest(BaseModel):
     query: str = Field(
         ...,
@@ -64,6 +68,10 @@ class ChatRequest(BaseModel):
     image: Optional[str] = Field(
         None,
         description="Base64 encoded image string (optional) for multimodal queries",
+    )
+    history: Optional[list[HistoryMessage]] = Field(
+        None,
+        description="Previous conversation history (list of role/content pairs)"
     )
 
     model_config = {
@@ -121,6 +129,7 @@ async def chat(request: ChatRequest):
             query=request.query,
             lang=request.language,
             image=request.image,
+            history=request.history,
         )
         return ChatResponse(
             response=result["response"],

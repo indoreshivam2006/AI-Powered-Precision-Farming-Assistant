@@ -1,0 +1,46 @@
+services:
+  # 1. AI Advisory Service (FastAPI)
+  - type: web
+    name: kisanmitra-advisory
+    runtime: python
+    rootDirectory: Backend/AI Advisory
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: HF_API_KEY
+        sync: false
+      - key: DATA_GOV_API_KEY
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+      - key: BACKEND_URL
+        sync: false
+      - key: DISEASE_BACKEND_URL
+        sync: false
+      - key: CROP_BACKEND_URL
+        sync: false
+
+  # 2. Crop Recommendation Service (FastAPI)
+  - type: web
+    name: kisanmitra-crop
+    runtime: python
+    rootDirectory: Backend/Crop recommendation
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: OPEN_WEATHER_API_KEY
+        sync: false
+
+  # 3. Disease Prediction Service (FastAPI)
+  - type: web
+    name: kisanmitra-disease
+    runtime: python
+    rootDirectory: Backend/Disease prediction
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT

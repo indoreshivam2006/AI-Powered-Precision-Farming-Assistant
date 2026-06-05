@@ -8,8 +8,9 @@ import os
 import requests
 from langchain.tools import tool
 
-# Base URL for team's backend APIs — reads from .env, falls back to localhost
-TEAM_BASE_URL = os.getenv("TEAM_BASE_URL", "http://localhost:8000")
+# Base URLs for backend microservices — reads from .env, falls back to localhost
+DISEASE_BACKEND_URL = os.getenv("DISEASE_BACKEND_URL", "http://localhost:8000")
+CROP_BACKEND_URL = os.getenv("CROP_BACKEND_URL", "http://localhost:8001")
 
 
 @tool
@@ -18,14 +19,85 @@ def crop_fertilizer_tool(soil_npk: str, location: str) -> str:
     to use, or needs crop recommendations for their region.
     Input: soil NPK values (e.g. 'N=80, P=40, K=30') and district/location."""
     try:
-        resp = requests.post(
-            f"{TEAM_BASE_URL}/recommend",
-            json={"npk": soil_npk, "location": location},
-            timeout=10,
-        )
+        # Parse NPK from string
+        import re
+        n_val = 90.0
+        p_val = 42.0
+        k_val = 43.0
+        n_match = re.search(r'n\s*[:=]\s*(\d+(?:\.\d+)?)', soil_npk, re.IGNORECASE)
+        p_match = re.search(r'p\s*[:=]\s*(\d+(?:\.\d+)?)', soil_npk, re.IGNORECASE)
+        k_match = re.search(r'k\s*[:=]\s*(\d+(?:\.\d+)?)', soil_npk, re.IGNORECASE)
+        if n_match: n_val = float(n_match.group(1))
+        if p_match: p_val = float(p_match.group(1))
+        if k_match: k_val = float(k_match.group(1))
+
+        # Fetch weather for location if API key is present
+        temp_val = 27.0
+        humidity_val = 70.0
+        api_key = os.getenv("OPEN_WEATHER_API_KEY")
+        if api_key and location:
+            try:
+                loc_clean = location.split(',')[0].replace("Tahsil", "").replace("Tehsil", "").replace("District", "").strip()
+                url = f"https://api.openweathermap.org/data/2.5/weather?q={loc_clean}&appid={api_key}&units=metric"
+                w_resp = requests.get(url, timeout=5)
+                if w_resp.status_code == 200:
+                    w_data = w_resp.json()
+                    temp_val = float(w_data.get("main", {}).get("temp", temp_val))
+                    humidity_val = float(w_data.get("main", {}).get("humidity", humidity_val))
+            except Exception:
+                pass
+
+        # Call crop recommendation model
+        payload = {
+            "n": n_val,
+            "p": p_val,
+            "k": k_val,
+            "ph": 6.5,
+            "rainfall": 200.0,
+            "temperature": temp_val,
+            "humidity": humidity_val
+        }
+        
+        rec_url = f"{CROP_BACKEND_URL}/recommend"
+        resp = requests.post(rec_url, json=payload, timeout=10)
         resp.raise_for_status()
-        data = resp.json()
-        return data.get("recommendation", "No recommendation available.")
+        rec_data = resp.json()
+        crop = rec_data.get("crop", "rice")
+        confidence = rec_data.get("confidence", "N/A")
+
+        # Now get fertilizer optimization for the recommended crop
+        fert_payload = {
+            "crop": crop.lower(),
+            "n": n_val,
+            "p": p_val,
+            "k": k_val,
+            "area": 1.0 # default to 1 acre
+        }
+        
+        fert_url = f"{CROP_BACKEND_URL}/fertilizer"
+        fert_resp = requests.post(fert_url, json=fert_payload, timeout=10)
+        fert_details = ""
+        if fert_resp.ok:
+            f_data = fert_resp.json()
+            dose = f_data.get("fertilizer_dose_per_ha", {})
+            schedule = f_data.get("application_schedule", [])
+            notes = f_data.get("notes", [])
+            
+            dose_str = ", ".join(f"{k}: {v} kg/ha" for k, v in dose.items() if k != "total")
+            schedule_str = "\n".join(f"- Step {i+1}: {step}" for i, step in enumerate(schedule))
+            notes_str = "\n".join(f"- {note}" for note in notes)
+            
+            fert_details = (
+                f"\n\nRecommended Fertilizer Doses:\n{dose_str}"
+                f"\n\nApplication Schedule:\n{schedule_str}"
+                f"\n\nExpert Notes:\n{notes_str}"
+            )
+
+        return (
+            f"Based on the crop recommendation model:\n"
+            f"- Recommended Crop: {crop.capitalize()} (Confidence: {confidence})"
+            f"{fert_details}"
+        )
     except requests.exceptions.ConnectionError:
         # Fallback: use RAG knowledge for crop advice when API is down
         try:
@@ -51,7 +123,7 @@ def disease_detector_tool(symptoms_or_image: str) -> str:
     Input: description of symptoms OR image URL/base64 string of the leaf."""
     try:
         resp = requests.post(
-            f"{TEAM_BASE_URL}/detect",
+            f"{DISEASE_BACKEND_URL}/detect",
             json={"image": symptoms_or_image},
             timeout=15,
         )

@@ -1,4 +1,17 @@
-# Python
+# ═══════════════════════════════════════════════════════════════
+#  .gitignore — Kisan Mitra (Monorepo)
+#  NEVER push API keys, secrets, or large model files to GitHub.
+# ═══════════════════════════════════════════════════════════════
+
+# ─── Environment Variables (CRITICAL — contains API keys) ─────
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.production
+
+# ─── Python ───────────────────────────────────────────────────
 __pycache__/
 *.py[cod]
 *$py.class
@@ -13,8 +26,8 @@ dist/
 downloads/
 eggs/
 .eggs/
-/lib/
-/lib64/
+lib/
+lib64/
 parts/
 sdist/
 var/
@@ -22,33 +35,52 @@ var/
 .installed.cfg
 *.egg
 
-# Node
-node_modules/
-npm-debug.log
-yarn-error.log
+# ─── ML Model Files (too large for GitHub — host separately) ──
+*.pkl
+*.keras
+*.h5
+*.pt
+*.pth
+*.onnx
+*.tflite
+*.pb
+*.savedmodel/
 
-# Next.js
+# Allow specific ML models needed for deployment
+!Backend/Crop recommendation/crop_model.pkl
+!Backend/Crop recommendation/crop_scaler.pkl
+!Backend/Disease prediction/model/plant_disease_model.keras
+
+
+# ─── Datasets (too large for GitHub) ──────────────────────────
+Backend/Crop recommendation/dataset/
+Backend/Disease prediction/dataset/
+Backend/Disease prediction/report/
+
+# ─── Node / Next.js ──────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-error.log*
+yarn-debug.log*
+.pnpm-debug.log*
 .next/
 out/
-build/
 
-# Environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# ─── ChromaDB vector store ────────────────────────────────────
+chroma_db/
 
-# IDEs
+# ─── IDEs ─────────────────────────────────────────────────────
 .vscode/
 .idea/
 *.swp
 *.swo
+*.code-workspace
 
-# OS
+# ─── OS files ─────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Other
-chroma_db/
+# ─── Misc ─────────────────────────────────────────────────────
 .sixth/
+*.log

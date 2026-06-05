@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 load_dotenv(override=True)
 
 from langchain_groq import ChatGroq
-from langchain.agents import create_tool_calling_agent, AgentExecutor
+from langchain_classic.agents import create_tool_calling_agent, AgentExecutor
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 try:
@@ -302,6 +302,10 @@ def _call_gemini_with_image(query: str, image_b64: str, lang: str) -> str | None
 # ── System Prompt ───────────────────────────────────────────────────
 SYSTEM_PROMPT = """You are KisanMitra (किसान मित्र), a friendly AI farming assistant built for Indian farmers.
 
+## CRITICAL DOMAIN GUARDRAIL
+- You must STRICTLY refuse to answer any queries that are not related to agriculture, farming, crops, seeds, soil, weather, mandi prices, pesticides, irrigation, or government agricultural schemes.
+- If the user asks general-knowledge, coding, creative writing, or off-topic questions, politely refuse by saying: 'I am KisanMitra, your farming companion. I can only assist with agricultural and farming-related questions.'
+
 ## Language Rules
 - You support three languages: Hindi (hi), Marathi (mr), and English (en).
 - {language_instruction}
@@ -348,6 +352,7 @@ SYSTEM_PROMPT = """You are KisanMitra (किसान मित्र), a frien
 # ── Prompt Template ─────────────────────────────────────────────────
 prompt = ChatPromptTemplate.from_messages([
     ("system", SYSTEM_PROMPT),
+    MessagesPlaceholder("chat_history"),
     ("human", "{input}"),
     ("placeholder", "{agent_scratchpad}"),
 ])
@@ -371,7 +376,7 @@ def get_agent_executor():
     return _AGENT_EXECUTOR
 
 
-def ask_agent(query: str, lang: str = None, image: str = None) -> dict:
+def ask_agent(query: str, lang: str = None, image: str = None, history: list = None) -> dict:
     """
     Main entry point — send a farmer's query to the agent.
 
@@ -380,6 +385,7 @@ def ask_agent(query: str, lang: str = None, image: str = None) -> dict:
         lang:  Detected language code ('hi', 'mr', 'en').
                If None, auto-detected from query text.
         image: Base64 string of an image (optional).
+        history: Previous chat history messages.
 
     Returns:
         dict with 'response' (str) and 'language' (str).
@@ -402,11 +408,24 @@ def ask_agent(query: str, lang: str = None, image: str = None) -> dict:
 
     language_instruction = get_language_instruction(lang)
 
+    # Build chat history
+    from langchain_core.messages import HumanMessage, AIMessage
+    chat_history = []
+    if history:
+        for msg in history:
+            role = getattr(msg, "role", None) or (msg.get("role") if isinstance(msg, dict) else None)
+            content = getattr(msg, "content", None) or (msg.get("content") if isinstance(msg, dict) else None)
+            if role == "user":
+                chat_history.append(HumanMessage(content=content))
+            elif role == "assistant":
+                chat_history.append(AIMessage(content=content))
+
     try:
         agent_executor = get_agent_executor()
         result = agent_executor.invoke({
             "input": query,
             "language_instruction": language_instruction,
+            "chat_history": chat_history,
         })
         return {
             "response": result["output"],

@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Send, Bot, User, Loader2, Mic, Square, Volume2, Camera, ImagePlus, X } from "lucide-react";
 import dynamic from "next/dynamic";
 import { FeatureShell } from "@/components/FeatureShell";
+import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 import { reverseGeocode } from "@/lib/geocode";
 import type ReactWebcam from "react-webcam";
 import type { WebcamProps } from "react-webcam";
@@ -78,7 +79,7 @@ export default function AdvisoryPage() {
     }
   };
 
-  // Text to Speech
+  // Text to Speech — auto-detect language from response text
   const handlePlayAudio = (id: string, text: string) => {
     if ("speechSynthesis" in window) {
       window.speechSynthesis.cancel(); // Stop current speech
@@ -90,7 +91,12 @@ export default function AdvisoryPage() {
 
       setPlayingMessageId(id);
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = "hi-IN"; // Default to Hindi, can be changed
+
+      // Auto-detect language: check for Devanagari (Hindi/Marathi) characters
+      const devanagariChars = (text.match(/[\u0900-\u097F]/g) || []).length;
+      const totalAlpha = (text.match(/\S/g) || []).length;
+      const isDevanagari = totalAlpha > 0 && (devanagariChars / totalAlpha) > 0.3;
+      utterance.lang = isDevanagari ? "hi-IN" : "en-IN";
       utterance.rate = 0.9;
 
       utterance.onend = () => setPlayingMessageId(null);
@@ -181,6 +187,11 @@ export default function AdvisoryPage() {
         body: JSON.stringify({ messages: newMessages, userLocation }),
       });
 
+      if (!res.ok) {
+        const errorText = await res.text().catch(() => "");
+        throw new Error(errorText || `Server error (${res.status})`);
+      }
+
       if (!res.body) throw new Error("No response body");
 
       const reader = res.body.getReader();
@@ -219,7 +230,7 @@ export default function AdvisoryPage() {
   return (
     <FeatureShell intro="A friendly AI agronomist for everyday questions, powered by real-time intelligence.">
       <div className="flex flex-col h-[60vh]">
-        <div className="flex-1 space-y-4 overflow-y-auto pr-2 pb-4">
+        <div className="flex-1 space-y-4 overflow-y-auto pr-2 pb-4 scrollbar-none">
           {messages.map((m) => (
             <div key={m.id} className={`flex gap-3 ${m.role === "user" ? "flex-row-reverse" : ""}`}>
               <span
@@ -231,15 +242,19 @@ export default function AdvisoryPage() {
                 {m.role === "user" ? <User className="h-4 w-4" /> : <Bot className="h-4 w-4" />}
               </span>
               <div
-                className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap ${m.role === "user"
-                  ? "bg-secondary text-secondary-foreground"
-                  : "bg-accent text-accent-foreground border border-border"
+                className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed font-body ${m.role === "user"
+                  ? "bg-secondary text-secondary-foreground whitespace-pre-wrap"
+                  : "bg-accent text-accent-foreground border border-border/60"
                   }`}
               >
                 {m.image && (
                   <img src={m.image} alt="User attachment" className="mb-2 max-w-full rounded-xl border border-border" style={{ maxHeight: '200px' }} />
                 )}
-                {m.content}
+                {m.role === "user" ? (
+                  m.content
+                ) : (
+                  <MarkdownRenderer text={m.content} />
+                )}
               </div>
               {m.role === "assistant" && (
                 <button
@@ -258,7 +273,7 @@ export default function AdvisoryPage() {
               <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground">
                 <Bot className="h-4 w-4" />
               </span>
-              <div className="max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed bg-accent text-accent-foreground border border-border flex items-center gap-2">
+              <div className="max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed font-body bg-accent text-accent-foreground border border-border/60 flex items-center gap-2">
                 <Loader2 className="h-4 w-4 animate-spin text-primary" /> Thinking...
               </div>
             </div>
@@ -267,7 +282,7 @@ export default function AdvisoryPage() {
         </div>
 
         {isCameraOpen && (
-          <div className="absolute inset-0 z-50 bg-background/95 backdrop-blur flex flex-col items-center justify-center p-4 animate-fade-in">
+          <div className="fixed inset-0 z-50 bg-background/95 backdrop-blur flex flex-col items-center justify-center p-4 animate-fade-in">
             <div className="relative w-full max-w-md bg-card rounded-2xl overflow-hidden shadow-xl border border-border">
               <Webcam
                 audio={false}
@@ -337,3 +352,5 @@ export default function AdvisoryPage() {
     </FeatureShell>
   );
 }
+
+

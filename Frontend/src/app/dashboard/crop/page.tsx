@@ -50,7 +50,7 @@ function confidenceToNum(c: string) {
 // ── Sub-components ────────────────────────────────────────────────────────────
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-xs uppercase tracking-[0.18em] font-semibold text-muted-foreground mb-3">
+    <p className="text-[11px] uppercase tracking-[0.2em] font-body font-semibold text-muted-foreground mb-3">
       {children}
     </p>
   );
@@ -58,11 +58,11 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 
 function InfoChip({ label, value, icon }: { label: string; value: string | number; icon?: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-2 rounded-xl bg-accent/60 px-3 py-2">
+    <div className="flex items-center gap-2.5 rounded-xl bg-accent/60 px-3.5 py-2.5">
       {icon && <span className="text-muted-foreground">{icon}</span>}
       <div>
-        <p className="text-[10px] uppercase tracking-widest text-muted-foreground">{label}</p>
-        <p className="text-sm font-semibold text-foreground">{value}</p>
+        <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-body">{label}</p>
+        <p className="text-sm font-semibold text-foreground font-body">{value}</p>
       </div>
     </div>
   );
@@ -104,7 +104,7 @@ export default function CropRecommendationPage() {
     setLastInputs(payload);
 
     try {
-      const res = await fetch("http://localhost:8001/recommend", {
+      const res = await fetch("/api/backend/crop/recommend", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -135,7 +135,7 @@ export default function CropRecommendationPage() {
     };
 
     try {
-      const res = await fetch("http://localhost:8001/fertilizer", {
+      const res = await fetch("/api/backend/crop/fertilizer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -199,7 +199,7 @@ export default function CropRecommendationPage() {
                   { id: "k", label: "Potassium (K)", placeholder: "e.g. 43" },
                 ].map(f => (
                   <div key={f.id} className="grid gap-1.5">
-                    <Label htmlFor={f.id} className="text-xs uppercase tracking-wider text-muted-foreground">{f.label}</Label>
+                    <Label htmlFor={f.id} className="text-[11px] uppercase tracking-wider text-muted-foreground font-body">{f.label}</Label>
                     <Input id={f.id} name={f.id} placeholder={f.placeholder} required type="number" step="any" min={0} className="h-11 rounded-xl bg-background" />
                   </div>
                 ))}
@@ -217,7 +217,7 @@ export default function CropRecommendationPage() {
                   { id: "humidity",    label: "Humidity (%)",    placeholder: "e.g. 65",   step: "any", min: "0", max: "100" },
                 ].map(f => (
                   <div key={f.id} className="grid gap-1.5">
-                    <Label htmlFor={f.id} className="text-xs uppercase tracking-wider text-muted-foreground">{f.label}</Label>
+                    <Label htmlFor={f.id} className="text-[11px] uppercase tracking-wider text-muted-foreground font-body">{f.label}</Label>
                     <Input id={f.id} name={f.id} placeholder={f.placeholder} required type="number"
                       step={f.step} min={f.min} max={f.max}
                       className="h-11 rounded-xl bg-background"
@@ -309,12 +309,12 @@ export default function CropRecommendationPage() {
               <SectionTitle>Crop & Field</SectionTitle>
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="grid gap-1.5 sm:col-span-1">
-                  <Label htmlFor="crop" className="text-xs uppercase tracking-wider text-muted-foreground">Crop Name</Label>
+                  <Label htmlFor="crop" className="text-[11px] uppercase tracking-wider text-muted-foreground font-body">Crop Name</Label>
                   <Input id="crop" name="crop" placeholder="e.g. rice, wheat, maize…" required
                     className="h-11 rounded-xl bg-background" />
                 </div>
                 <div className="grid gap-1.5">
-                  <Label htmlFor="area" className="text-xs uppercase tracking-wider text-muted-foreground">Field Area (acres)</Label>
+                  <Label htmlFor="area" className="text-[11px] uppercase tracking-wider text-muted-foreground font-body">Field Area (acres)</Label>
                   <Input id="area" name="area" placeholder="e.g. 2.5" required type="number" step="any" min={0.1} className="h-11 rounded-xl bg-background" />
                 </div>
               </div>
@@ -329,7 +329,7 @@ export default function CropRecommendationPage() {
                   { id: "fk", label: "Potassium (K)", placeholder: "e.g. 100" },
                 ].map(f => (
                   <div key={f.id} className="grid gap-1.5">
-                    <Label htmlFor={f.id} className="text-xs uppercase tracking-wider text-muted-foreground">{f.label}</Label>
+                    <Label htmlFor={f.id} className="text-[11px] uppercase tracking-wider text-muted-foreground font-body">{f.label}</Label>
                     <Input id={f.id} name={f.id} placeholder={f.placeholder} required type="number" step="any" min={0} className="h-11 rounded-xl bg-background" />
                   </div>
                 ))}

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { Video, VideoOff, Loader2, Activity, Zap, Shield, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FeatureShell } from "@/components/FeatureShell";
+import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 
 /* ── Types ──────────────────────────────────────────────────────────── */
 
@@ -16,7 +17,7 @@ type DetectionResult = {
 
 /* ── Constants ──────────────────────────────────────────────────────── */
 
-const BACKEND_URL = "http://localhost:8000";
+const BACKEND_URL = "/api/backend/disease";
 const FRAME_INTERVAL = 3; // send every 3rd frame
 
 /* ── Page Component ─────────────────────────────────────────────────── */
@@ -35,7 +36,7 @@ export default function LiveDetectPage() {
   const streamRef = useRef<MediaStream | null>(null);
   const animFrameRef = useRef<number>(0);
   const frameCountRef = useRef(0);
-  const fpsTimerRef = useRef<ReturnType<typeof setInterval>>();
+  const fpsTimerRef = useRef<ReturnType<typeof setInterval> | undefined>(undefined);
   const fpsCountRef = useRef(0);
   const isProcessingRef = useRef(false);
 
@@ -178,7 +179,7 @@ export default function LiveDetectPage() {
       {modelReady === null && (
         <div className="flex items-center justify-center gap-3 rounded-2xl bg-accent p-6 mb-6 animate-pulse">
           <Loader2 className="h-5 w-5 animate-spin text-primary" />
-          <p className="text-sm font-medium">Warming up AI model...</p>
+          <p className="text-sm font-body font-medium">Warming up AI model…</p>
         </div>
       )}
 
@@ -186,8 +187,8 @@ export default function LiveDetectPage() {
         <div className="flex items-center gap-3 rounded-2xl bg-destructive/10 p-6 mb-6 border border-destructive/20">
           <AlertTriangle className="h-5 w-5 text-destructive shrink-0" />
           <div>
-            <p className="text-sm font-medium text-destructive">Disease prediction server is offline</p>
-            <p className="text-xs text-muted-foreground mt-1">
+            <p className="text-sm font-body font-medium text-destructive">Disease prediction server is offline</p>
+            <p className="text-xs text-muted-foreground mt-1 font-body">
               Start the backend: <code className="bg-muted px-1.5 py-0.5 rounded text-xs">cd Backend/Disease prediction &amp;&amp; python main.py</code>
             </p>
           </div>
@@ -198,7 +199,7 @@ export default function LiveDetectPage() {
       {error && (
         <div className="flex items-start gap-3 rounded-2xl bg-destructive/10 p-6 mb-6 border border-destructive/20 animate-fade-up">
           <AlertTriangle className="h-5 w-5 text-destructive shrink-0 mt-0.5" />
-          <p className="text-sm text-destructive">{error}</p>
+          <p className="text-sm text-destructive font-body">{error}</p>
         </div>
       )}
 
@@ -229,7 +230,7 @@ export default function LiveDetectPage() {
               <div className="grid h-20 w-20 place-items-center rounded-full bg-primary/10 backdrop-blur">
                 <Video className="h-8 w-8 text-primary" />
               </div>
-              <p className="text-muted-foreground text-sm">Click start to begin live detection</p>
+              <p className="text-muted-foreground text-sm font-body">Click start to begin live detection</p>
             </div>
           )}
 
@@ -252,7 +253,7 @@ export default function LiveDetectPage() {
               {/* Top-right: Confidence */}
               <div className="absolute top-4 right-4 pointer-events-none">
                 <div className="rounded-xl bg-black/70 backdrop-blur-md px-4 py-2.5 shadow-lg text-right">
-                  <p className="text-[10px] uppercase tracking-wider text-white/60">Confidence</p>
+                  <p className="text-[10px] uppercase tracking-wider text-white/55 font-body">Confidence</p>
                   <p className="font-display text-2xl md:text-3xl text-white leading-none mt-0.5" style={{ color: confColor }}>
                     {confPct}%
                   </p>
@@ -269,7 +270,7 @@ export default function LiveDetectPage() {
               {/* Bottom-left: Treatment */}
               <div className="absolute bottom-4 left-4 right-16 pointer-events-none">
                 <div className="rounded-xl bg-black/70 backdrop-blur-md px-4 py-2.5 shadow-lg">
-                  <p className="text-[10px] uppercase tracking-wider text-white/50 flex items-center gap-1.5">
+                  <p className="text-[10px] uppercase tracking-wider text-white/45 flex items-center gap-1.5 font-body">
                     <Shield className="h-3 w-3" /> Treatment
                   </p>
                   <p className="text-xs text-white/90 mt-1 leading-relaxed line-clamp-2">
@@ -285,7 +286,7 @@ export default function LiveDetectPage() {
             <div className="absolute bottom-4 right-4 pointer-events-none">
               <div className="rounded-lg bg-black/70 backdrop-blur-md px-3 py-1.5 shadow-lg flex items-center gap-1.5">
                 <Zap className="h-3 w-3 text-yellow-400" />
-                <span className="text-xs font-mono text-white/80">{fps} FPS</span>
+                <span className="text-xs font-mono text-white/75">{fps} FPS</span>
               </div>
             </div>
           )}
@@ -295,7 +296,7 @@ export default function LiveDetectPage() {
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <div className="flex items-center gap-2 rounded-xl bg-black/70 backdrop-blur-md px-4 py-2.5">
                 <Loader2 className="h-4 w-4 animate-spin text-primary" />
-                <span className="text-sm text-white/80">Scanning...</span>
+                <span className="text-sm text-white/75 font-body">Scanning…</span>
               </div>
             </div>
           )}
@@ -348,7 +349,7 @@ export default function LiveDetectPage() {
         <div className="mt-6 mx-auto max-w-2xl rounded-2xl bg-card border border-border p-6 shadow-soft animate-fade-up">
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
-              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Live Detection Result</p>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-body font-semibold">Live Detection Result</p>
               <p className="mt-1 font-display text-2xl truncate">{result.label}</p>
             </div>
             <div className="text-right shrink-0">
@@ -365,10 +366,12 @@ export default function LiveDetectPage() {
               style={{ width: `${confPct}%`, backgroundColor: confColor }}
             />
           </div>
-          <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
+          <div className="mt-4 text-sm text-muted-foreground leading-relaxed">
             <span className="font-medium text-foreground">Treatment: </span>
-            {result.treatment}
-          </p>
+            <div className="mt-1">
+              <MarkdownRenderer text={result.treatment} />
+            </div>
+          </div>
         </div>
       )}
     </FeatureShell>

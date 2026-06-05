@@ -1,7 +1,7 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 import uvicorn
 from typing import Optional
 from farm_advisory_system import FarmAdvisorySystem
@@ -27,13 +27,13 @@ app.add_middleware(
 )
 
 class CropRequest(BaseModel):
-    n: float
-    p: float
-    k: float
-    ph: float
-    rainfall: float
-    temperature: float
-    humidity: Optional[float] = 50.0
+    n: float = Field(..., ge=0, le=500, description="Nitrogen content (kg/ha)")
+    p: float = Field(..., ge=0, le=300, description="Phosphorus content (mg/kg)")
+    k: float = Field(..., ge=0, le=300, description="Potassium content (mg/kg)")
+    ph: float = Field(..., ge=3.5, le=9.5, description="Soil pH level")
+    rainfall: float = Field(..., ge=0, le=5000, description="Annual rainfall (mm)")
+    temperature: float = Field(..., ge=-10, le=55, description="Temperature (°C)")
+    humidity: Optional[float] = Field(50.0, ge=0, le=100, description="Relative humidity (%)")
 
 @app.post("/recommend")
 async def recommend_crop(req: CropRequest):
@@ -65,11 +65,11 @@ async def recommend_crop(req: CropRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 class FertilizerRequest(BaseModel):
-    crop: str
-    n: float
-    p: float
-    k: float
-    area: float
+    crop: str = Field(..., min_length=1)
+    n: float = Field(..., ge=0, le=500)
+    p: float = Field(..., ge=0, le=300)
+    k: float = Field(..., ge=0, le=300)
+    area: float = Field(..., ge=0.1, le=1000)
 
 @app.post("/fertilizer")
 async def optimize_fertilizer(req: FertilizerRequest):

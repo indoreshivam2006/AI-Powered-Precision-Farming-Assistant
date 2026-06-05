@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
 export async function POST(req: Request) {
@@ -16,7 +17,8 @@ export async function POST(req: Request) {
     const backendFormData = new FormData();
     backendFormData.append("file", file, "audio.webm");
 
-    const response = await fetch("http://127.0.0.1:8080/transcribe", {
+    const advisoryUrl = process.env.ADVISORY_API_URL || "http://127.0.0.1:8080";
+    const response = await fetch(`${advisoryUrl}/transcribe`, {
       method: "POST",
       body: backendFormData,
     });
