@@ -3,7 +3,7 @@ services:
   - type: web
     name: kisanmitra-advisory
     runtime: python
-    rootDirectory: Backend/AI Advisory
+    rootDir: Backend/AI Advisory
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
@@ -30,7 +30,7 @@ services:
   - type: web
     name: kisanmitra-crop
     runtime: python
-    rootDirectory: Backend/Crop recommendation
+    rootDir: Backend/Crop recommendation
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
@@ -41,6 +41,6 @@ services:
   - type: web
     name: kisanmitra-disease
     runtime: python
-    rootDirectory: Backend/Disease prediction
+    rootDir: Backend/Disease prediction
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
