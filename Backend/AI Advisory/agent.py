@@ -203,7 +203,7 @@ def _call_gemini_fallback(query: str, lang: str) -> str | None:
     if not api_key:
         return None
 
-    model = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+    model = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
     language_instruction = get_language_instruction(lang)
     context = _build_fallback_context(query)
@@ -265,7 +265,7 @@ def _call_gemini_with_image(query: str, image_b64: str, lang: str) -> str | None
         except:
             pass
 
-    model = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+    model = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
     language_instruction = get_language_instruction(lang)
 
